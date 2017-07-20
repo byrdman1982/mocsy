@@ -2,8 +2,8 @@
 !! \BRIEF Fortran 90 program to test errors.f90
 PROGRAM test_errors
 
-   USE msingledouble
-   USE merrors
+   USE mocsy_singledouble
+   USE mocsy_errors
 
    IMPLICIT NONE
 

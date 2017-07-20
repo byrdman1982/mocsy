@@ -1,9 +1,9 @@
 !> \file test_kzero.f90
-!! \BRIEF Fortran 90 program to test kzero routine in gasx.f90
+!! \BRIEF Fortran 90 program to test kzero routine in mocsy_gasx.f90
 PROGRAM test_kzero
 
-   USE msingledouble
-   USE gasx
+   USE mocsy_singledouble
+   USE mocsy_gasx
 
    IMPLICIT NONE
 

@@ -1,7 +1,7 @@
 !> \file p2fCO2.F90
 !! \BRIEF 
 !>    Module with p2fCO2 subroutine - compute fCO2 from pCO2, in situ T, atm pressure, hydrostatic pressure
-MODULE mp2fCO2
+MODULE mocsy_p2fCO2
 CONTAINS
 !>    Compute fCO2 from arrays of pCO2, in situ temp, atm pressure, & hydrostatic pressure
 SUBROUTINE p2fCO2(pCO2, temp, Patm, p, N, fCO2)
@@ -14,7 +14,7 @@ SUBROUTINE p2fCO2(pCO2, temp, Patm, p, N, fCO2)
 #   define SGLE(x)    REAL(x)
 #endif
 
-  USE msingledouble
+  USE mocsy_singledouble
   IMPLICIT NONE
 
   !> number of records
@@ -68,4 +68,4 @@ SUBROUTINE p2fCO2(pCO2, temp, Patm, p, N, fCO2)
 
   RETURN
 END SUBROUTINE p2fCO2
-END MODULE mp2fCO2
+END MODULE mocsy_p2fCO2

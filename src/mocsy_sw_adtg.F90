@@ -1,7 +1,7 @@
 !> \file sw_adtg.F90
 !! \BRIEF 
 !> Module with sw_adtg function - compute adiabatic temp. gradient from S,T,P
-MODULE msw_adtg
+MODULE mocsy_sw_adtg
 CONTAINS
 !>  Function to calculate adiabatic temperature gradient as per UNESCO 1983 routines.
 FUNCTION sw_adtg  (s,t,p)
@@ -10,7 +10,7 @@ FUNCTION sw_adtg  (s,t,p)
   !     Calculates adiabatic temperature gradient as per UNESCO 1983 routines.
   !     Armin Koehl akoehl@ucsd.edu
   !     ==================================================================
-  USE msingledouble
+  USE mocsy_singledouble
   IMPLICIT NONE
   !> salinity [psu (PSU-78)]
   REAL(kind=r8) :: s
@@ -61,7 +61,7 @@ FUNCTION sw_adtg_DNAD  (s,t,p)
   !     Calculates adiabatic temperature gradient as per UNESCO 1983 routines.
   !     Armin Koehl akoehl@ucsd.edu
   !     ==================================================================
-  USE msingledouble
+  USE mocsy_singledouble
   USE Dual_Num_Auto_Diff
   IMPLICIT NONE
   !> salinity [psu (PSU-78)]
@@ -103,4 +103,4 @@ FUNCTION sw_adtg_DNAD  (s,t,p)
        + (  e0 + (e1 + e2*T)*T )*P*P
 
 END FUNCTION sw_adtg_DNAD
-END MODULE msw_adtg
+END MODULE mocsy_sw_adtg

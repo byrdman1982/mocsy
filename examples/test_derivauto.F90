@@ -2,9 +2,9 @@
 !! \BRIEF Fortran 90 program to test mocsy.f90
 PROGRAM test_derivauto
 
-   USE msingledouble
-   USE mderivauto
-   USE mvars
+   USE mocsy_singledouble
+   USE mocsy_derivauto
+   USE mocsy_vars
 
    IMPLICIT NONE
 

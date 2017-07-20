@@ -59,49 +59,49 @@ vpath %     examples
 
 #vpath %.h src
 
-SOURCES = singledouble.F90 \
-          sw_adtg.F90 \
-          sw_ptmp.F90 \
-          sw_temp.F90 \
-          tpot.F90 \
-          tis.F90 \
-          p80.F90 \
-          phsolvers.F90 \
-          rho.F90 \
-          rhoinsitu.F90 \
-          depth2press.F90 \
-          constants.F90 \
-          varsolver.F90 \
-          vars.F90 \
-          derivauto.F90 \
-          derivnum.F90 \
-          errors.F90 \
-          buffesm.F90 \
-          p2fCO2.F90 \
-          f2pCO2.F90 \
-          gasx.F90 
+SOURCES = mocsy_singledouble.F90 \
+          mocsy_sw_adtg.F90 \
+          mocsy_sw_ptmp.F90 \
+          mocsy_sw_temp.F90 \
+          mocsy_tpot.F90 \
+          mocsy_tis.F90 \
+          mocsy_p80.F90 \
+          mocsy_phsolvers.F90 \
+          mocsy_rho.F90 \
+          mocsy_rhoinsitu.F90 \
+          mocsy_depth2press.F90 \
+          mocsy_constants.F90 \
+          mocsy_varsolver.F90 \
+          mocsy_vars.F90 \
+          mocsy_derivauto.F90 \
+          mocsy_derivnum.F90 \
+          mocsy_errors.F90 \
+          mocsy_buffesm.F90 \
+          mocsy_p2fCO2.F90 \
+          mocsy_f2pCO2.F90 \
+          mocsy_gasx.F90 
 
-OBJS =  singledouble.o \
-        sw_adtg.o \
-        sw_ptmp.o \
-        sw_temp.o \
-        tpot.o \
-        tis.o \
-        p80.o \
-        phsolvers.o \
-        rho.o \
-        rhoinsitu.o \
-        depth2press.o \
-        constants.o \
-        varsolver.o \
-        vars.o \
-	derivauto.o \
-	derivnum.o \
-	errors.o \
-        buffesm.o \
-        p2fCO2.o \
-        f2pCO2.o \
-        gasx.o
+OBJS =  mocsy_singledouble.o \
+        mocsy_sw_adtg.o \
+        mocsy_sw_ptmp.o \
+        mocsy_sw_temp.o \
+        mocsy_tpot.o \
+        mocsy_tis.o \
+        mocsy_p80.o \
+        mocsy_phsolvers.o \
+        mocsy_rho.o \
+        mocsy_rhoinsitu.o \
+        mocsy_depth2press.o \
+        mocsy_constants.o \
+        mocsy_varsolver.o \
+        mocsy_vars.o \
+	mocsy_derivauto.o \
+	mocsy_derivnum.o \
+	mocsy_errors.o \
+        mocsy_buffesm.o \
+        mocsy_p2fCO2.o \
+        mocsy_f2pCO2.o \
+        mocsy_gasx.o
 
 EXEC = test_mocsy
 
@@ -116,8 +116,8 @@ library = libmocsy.a
 
 #---------------------------------------------------------------------------
 # Build the mocsy library containing the object files (not used, illustration only)
-$(library): DNAD.o $(OBJS)
-	ar cr $(library) DNAD.o $(OBJS)
+$(library): mocsy_DNAD.o $(OBJS)
+	ar cr $(library) mocsy_DNAD.o $(OBJS)
 
 # Build the Fortran program executable that tests the mocsy library (test_mocsy)
 #<<<<<<< HEAD:Makefile
@@ -130,19 +130,19 @@ $(library): DNAD.o $(OBJS)
 #	f2py -c $(SOURCES) -m mocsy --fcompiler=gnu95 --f90flags=-O3
 #	rm $(SOURCES)
 #=======
-$(EXEC): $(EXEC).o DNAD.o $(OBJS) test_mocsy.o $(library) 
+$(EXEC): $(EXEC).o mocsy_DNAD.o $(OBJS) test_mocsy.o $(library) 
 	$(FC) $(FCFLAGS) -o $@ $@.o $(LDFLAGS)
 
 # Build the shared object file for python
-mocsy.so: DNAD.o $(SOURCES)
+mocsy.so: mocsy_DNAD.o $(SOURCES)
 	cp src/*.F90 .
 	# Select the kind map
 	cp -f src/$(KIND_MAP) .f2py_f2cmap
 	f2py -c $(SOURCES) skip: varsolver_dnad : skip: constants_dnad :        \
 	skip: sw_ptmp_dnad : skip: sw_temp_dnad : skip: sw_adtg_dnad :          \
 	skip: rho_dnad : skip: equation_at_dnad : skip: solve_at_general_dnad : \
-	DNAD.o -m mocsy --fcompiler=gnu95 --f90flags="$(FCFLAGS)"
-	rm $(SOURCES) DNAD.F90
+	mocsy_DNAD.o -m mocsy --fcompiler=gnu95 --f90flags="$(FCFLAGS)"
+	rm $(SOURCES) mocsy_DNAD.F90
 #---------------------------------------------------------------------------
 # Other test programs
 #test_errors:  $(LIBSRC_OBJECTS) test_errors.o $(library) 

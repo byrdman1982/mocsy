@@ -1,7 +1,7 @@
 !> \file vars.F90
 !! \BRIEF 
 !> Module with vars subroutine - compute carbonate system vars from DIC,Alk,T,S,P,nuts
-MODULE mvars
+MODULE mocsy_vars
 CONTAINS
 !>    Computes standard carbonate system variables (pH, CO2*, HCO3- and CO32-, OmegaA, OmegaC, R)
 !!    as 1D arrays FROM
@@ -107,12 +107,12 @@ SUBROUTINE vars(ph, pco2, fco2, co2, hco3, co3, OmegaA, OmegaC, BetaD, rhoSW, p,
 #   define SGLE(x)    REAL(x)
 #endif
 
-  USE msingledouble
-  USE mconstants
-  USE mp80
-  USE mrho
-  USE msw_temp
-  USE mvarsolver
+  USE mocsy_singledouble
+  USE mocsy_constants
+  USE mocsy_p80
+  USE mocsy_rho
+  USE mocsy_sw_temp
+  USE mocsy_varsolver
 
   IMPLICIT NONE
 
@@ -512,12 +512,12 @@ SUBROUTINE vars_pertK(ph, pco2, fco2, co2, hco3, co3, OmegaA, OmegaC,     &
 #   define SGLE(x)    REAL(x)
 #endif
 
-  USE msingledouble
-  USE mconstants
-  USE mp80
-  USE mrho
-  USE msw_temp
-  USE mvarsolver
+  USE mocsy_singledouble
+  USE mocsy_constants
+  USE mocsy_p80
+  USE mocsy_rho
+  USE mocsy_sw_temp
+  USE mocsy_varsolver
 
   IMPLICIT NONE
 
@@ -870,4 +870,4 @@ SUBROUTINE vars_pertK(ph, pco2, fco2, co2, hco3, co3, OmegaA, OmegaC,     &
 
   RETURN
 END SUBROUTINE vars_pertK
-END MODULE mvars
+END MODULE mocsy_vars

@@ -2,8 +2,8 @@
 !! \BRIEF Fortran 90 program to test mocsy.f90
 PROGRAM test_mocsy
 
-   USE msingledouble
-   USE mvars
+   USE mocsy_singledouble
+   USE mocsy_vars
 
    IMPLICIT NONE
 

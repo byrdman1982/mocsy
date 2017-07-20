@@ -2,9 +2,9 @@
 !! \BRIEF Fortran 90 program to test num_deriv.f90
 PROGRAM test_derivnum
 
-   USE msingledouble
-   USE mvars
-   USE mderivnum
+   USE mocsy_singledouble
+   USE mocsy_vars
+   USE mocsy_derivnum
 
    IMPLICIT NONE
 

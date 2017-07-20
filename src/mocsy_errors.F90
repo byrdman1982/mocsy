@@ -1,7 +1,7 @@
 !> \file errors.F90
 !! \BRIEF 
 !> Module with errors subroutine - Propagate standard error (or uncertainty) in carbonate system vars 
-MODULE merrors
+MODULE mocsy_errors
 CONTAINS
 
 
@@ -70,9 +70,9 @@ SUBROUTINE errors  (eH, epCO2, efCO2, eCO2, eHCO3, eCO3, eOmegaA, eOmegaC,   &
 #   define SGLE(x)    REAL(x)
 #endif
 
-  USE msingledouble
-  USE mconstants
-  USE mderivnum
+  USE mocsy_singledouble
+  USE mocsy_constants
+  USE mocsy_derivnum
 
   IMPLICIT NONE
   
@@ -644,4 +644,4 @@ SUBROUTINE errors  (eH, epCO2, efCO2, eCO2, eHCO3, eCO3, eOmegaA, eOmegaC,   &
 
   RETURN
 END SUBROUTINE errors
-END MODULE merrors
+END MODULE mocsy_errors

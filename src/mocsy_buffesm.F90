@@ -1,7 +1,7 @@
 !> \file buffesm2.F90
 !! \BRIEF 
 !> Module with buffesm subroutine - compute carbonate system vars from DIC,Alk,T,S,P,nuts
-MODULE mbuffesm
+MODULE mocsy_buffesm
 CONTAINS
 !>    Computes buffer factors of the seawater carbonate system as defined by Egleston et al. (2010)
 !!    (corrected for sign error & modified to account for effects of total dissolved inorganic P and Si acid systems) 
@@ -103,9 +103,9 @@ SUBROUTINE buffesm(gammaDIC, betaDIC, omegaDIC, gammaALK, betaALK, omegaALK, Rf,
   !     Rf =   dpCO2/pCO2 / dDIC/DIC    (i.e., the Revelle factor, unitless)
 
 
-  USE msingledouble
-  USE mconstants
-  USE mvars
+  USE mocsy_singledouble
+  USE mocsy_constants
+  USE mocsy_vars
 
   IMPLICIT NONE
 
@@ -347,4 +347,4 @@ SUBROUTINE buffesm(gammaDIC, betaDIC, omegaDIC, gammaALK, betaALK, omegaALK, Rf,
 
   RETURN
 END SUBROUTINE buffesm
-END MODULE mbuffesm
+END MODULE mocsy_buffesm

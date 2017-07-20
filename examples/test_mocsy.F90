@@ -2,10 +2,10 @@
 !! \BRIEF Fortran 90 program to test mocsy.f90
 PROGRAM test_mocsy
 
-   USE msingledouble
-   USE mconstants
-   USE mvars
-   USE mderivauto
+   USE mocsy_singledouble
+   USE mocsy_constants
+   USE mocsy_vars
+   USE mocsy_derivauto
 
    IMPLICIT NONE
 

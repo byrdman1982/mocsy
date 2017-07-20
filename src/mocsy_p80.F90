@@ -1,7 +1,7 @@
 !> \file p80.F90
 !! \BRIEF 
 !> Module with p80 function - compute pressure from depth
-MODULE mp80
+MODULE mocsy_p80
 CONTAINS
 !>     Function to compute pressure from depth using Saunder's (1981) formula with eos80.
 FUNCTION p80(dpth,xlat)
@@ -20,7 +20,7 @@ FUNCTION p80(dpth,xlat)
   !     Modified (slight format changes + added ref. details):
   !     J. Orr, 16 April 2009
 
-  USE msingledouble
+  USE mocsy_singledouble
   IMPLICIT NONE
 
 ! Input variables:
@@ -47,4 +47,4 @@ FUNCTION p80(dpth,xlat)
 
   RETURN
 END FUNCTION p80
-END MODULE mp80
+END MODULE mocsy_p80

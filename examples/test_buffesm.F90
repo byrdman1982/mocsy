@@ -2,9 +2,9 @@
 !! \BRIEF Fortran 90 program to test mocsy.f90
 PROGRAM test_buffesm
 
-   USE msingledouble
-   USE mvars
-   USE mbuffesm
+   USE mocsy_singledouble
+   USE mocsy_vars
+   USE mocsy_buffesm
    
    IMPLICIT NONE
 

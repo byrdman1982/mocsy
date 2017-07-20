@@ -1,7 +1,7 @@
 !> \file varsolver.F90
 !! \BRIEF 
 !> Module with varsolver subroutine - solve for pH and other carbonate system variables
-MODULE mvarsolver
+MODULE mocsy_varsolver
 CONTAINS
 !>    Solve for pH and other carbonate system variables (with input from vars routine)
 SUBROUTINE varsolver(ph, pco2, fco2, co2, hco3, co3, OmegaA, OmegaC,             &
@@ -49,9 +49,9 @@ SUBROUTINE varsolver(ph, pco2, fco2, co2, hco3, co3, OmegaA, OmegaC,            
   !     OmegaA = Omega for aragonite, i.e., the aragonite saturation state
   !     OmegaC = Omega for calcite, i.e., the   calcite saturation state
 
-  USE msingledouble
-  USE mphsolvers
-  USE msw_ptmp
+  USE mocsy_singledouble
+  USE mocsy_phsolvers
+  USE mocsy_sw_ptmp
 
   IMPLICIT NONE
 
@@ -299,9 +299,9 @@ SUBROUTINE varsolver_DNAD (ph, pco2, fco2, co2, hco3, co3, OmegaA, OmegaC,      
   !     OmegaA = Omega for aragonite, i.e., the aragonite saturation state
   !     OmegaC = Omega for calcite, i.e., the   calcite saturation state
 
-  USE msingledouble
-  USE mphsolvers
-  USE msw_ptmp
+  USE mocsy_singledouble
+  USE mocsy_phsolvers
+  USE mocsy_sw_ptmp
   USE Dual_Num_Auto_Diff
 
   IMPLICIT NONE
@@ -498,4 +498,4 @@ SUBROUTINE varsolver_DNAD (ph, pco2, fco2, co2, hco3, co3, OmegaA, OmegaC,      
 
   RETURN
 END SUBROUTINE varsolver_DNAD
-END MODULE mvarsolver
+END MODULE mocsy_varsolver

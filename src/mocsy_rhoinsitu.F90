@@ -1,7 +1,7 @@
 !> \file rhoinsitu.F90
 !! \BRIEF 
 !> Module with rhoinsitu subroutine - compute in situ density from S, Tis, P
-MODULE mrhoinsitu
+MODULE mocsy_rhoinsitu
 CONTAINS
 !>     Compute in situ density from salinity (psu), in situ temperature (C), & pressure (db).
 !!     This subroutine is needed because rho is a function (using scalars not arrays)
@@ -11,8 +11,8 @@ SUBROUTINE rhoinsitu(salt, tempis, pdbar, N, rhois)
   !     Compute in situ density from salinity (psu), in situ temperature (C), & pressure (db)
   !     Needed because rho is a function
 
-  USE msingledouble
-  USE mrho
+  USE mocsy_singledouble
+  USE mocsy_rho
   IMPLICIT NONE
 
   INTEGER :: N
@@ -48,4 +48,4 @@ SUBROUTINE rhoinsitu(salt, tempis, pdbar, N, rhois)
 
   RETURN
 END SUBROUTINE rhoinsitu
-END MODULE mrhoinsitu
+END MODULE mocsy_rhoinsitu

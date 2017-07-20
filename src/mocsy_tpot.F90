@@ -1,7 +1,7 @@
 !> \file tpot.F90
 !! \BRIEF 
 !>    Module with tpot subroutine - compute potential T from in situ T,S,P
-MODULE mtpot
+MODULE mocsy_tpot
 CONTAINS
 !>    Compute potential temperature from arrays of in situ temp, salinity, and pressure.
 !!    This subroutine is needed because sw_ptmp is a function (using scalars not arrays)
@@ -16,8 +16,8 @@ SUBROUTINE tpot(salt, tempis, press, pressref, N, tempot)
 #   define SGLE(x)    REAL(x)
 #endif
 
-  USE msingledouble
-  USE msw_ptmp
+  USE mocsy_singledouble
+  USE mocsy_sw_ptmp
   IMPLICIT NONE
 
   !> number of records
@@ -59,4 +59,4 @@ SUBROUTINE tpot(salt, tempis, press, pressref, N, tempot)
 
   RETURN
 END SUBROUTINE tpot
-END MODULE mtpot
+END MODULE mocsy_tpot

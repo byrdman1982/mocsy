@@ -1,9 +1,9 @@
 !> \file test_phizero.f90
-!! \BRIEF Fortran 90 program to test phizero routine in gasx.f90
+!! \BRIEF Fortran 90 program to test phizero routine in mocsy_gasx.f90
 PROGRAM test_phizero
 
-   USE msingledouble
-   USE gasx
+   USE mocsy_singledouble
+   USE mocsy_gasx
 
    IMPLICIT NONE
 

@@ -1,7 +1,7 @@
 !> \file tis.F90
 !! \BRIEF 
 !>    Module with tis subroutine - compute in situ T from S,T,P
-MODULE mtis
+MODULE mocsy_tis
 CONTAINS
 !>    Compute in situ temperature from arrays of potential temp, salinity, and pressure.
 !!    This subroutine is needed because sw_temp is a function (using scalars not arrays)
@@ -10,8 +10,8 @@ SUBROUTINE tis(salt, tempot, press, pressref, N, tempis)
   !    Compute in situ temperature from arrays of in situ temp, salinity, and pressure.
   !    Needed because sw_temp is a function
 
-  USE msingledouble
-  USE msw_temp
+  USE mocsy_singledouble
+  USE mocsy_sw_temp
   IMPLICIT NONE
 
   !> number of records
@@ -54,4 +54,4 @@ SUBROUTINE tis(salt, tempot, press, pressref, N, tempis)
 
   RETURN
 END SUBROUTINE tis
-END MODULE mtis
+END MODULE mocsy_tis

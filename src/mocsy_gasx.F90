@@ -1,7 +1,7 @@
 !> \file mocsy_gasx.F90
 !! \BRIEF 
 !> Module with routines needed to compute gas exchange (flxco2, scco2, atmospheric xCO2 and pCO2)
-MODULE gasx
+MODULE mocsy_gasx
 CONTAINS
 !>    Computes air-sea CO2 flux & surface-ocean carbonate system vars (pH, CO2*, HCO3- and CO32-, OmegaA, OmegaC, R)
 !!    from T, S, P, ALK, DIC, total inorganic silicon, total inorganic phosphorus, all as 1-D arrays
@@ -106,9 +106,9 @@ SUBROUTINE flxco2(co2flux, co2ex, dpco2,                                        
 #   define SGLE(x)    REAL(x)
 #endif
 
-  USE msingledouble
-  USE mvars
-  USE mp2fCO2
+  USE mocsy_singledouble
+  USE mocsy_vars
+  USE mocsy_p2fCO2
 
   IMPLICIT NONE
 
@@ -315,7 +315,7 @@ SUBROUTINE pCO2atm2xCO2(pCO2atm, temp, salt, Patm, N, xCO2)
   !    Purpose:
   !    Compute xCO2 from arrays of pCO2atm, in situ T, S, & atm pressure
 
-  USE msingledouble
+  USE mocsy_singledouble
 
   IMPLICIT NONE
 
@@ -361,7 +361,7 @@ SUBROUTINE pistonvel(windspeed, Fice, N, kw660)
   !    Purpose:
   !    Compute piston velocity from wind speed, BUT without Schmidt number temperature correction (Sc differs each gas)
 
-  USE msingledouble
+  USE mocsy_singledouble
 
   IMPLICIT NONE
 
@@ -403,7 +403,7 @@ FUNCTION sccfc11(temp)
 !  Compute Schmidt number of CFC11 in seawater w/ formulation from Wanninkhof (Limnol. Oceanogr.: Methods 12, 2014, 351–362)
 !  Input is temperature in deg C.
 
-   USE msingledouble
+   USE mocsy_singledouble
    IMPLICIT NONE
 
 !  Input & output variables:
@@ -421,7 +421,7 @@ FUNCTION sccfc12(Tc)
 !  Compute Schmidt number of CFC12 in seawater w/ formulation from Wanninkhof (Limnol. Oceanogr.: Methods 12, 2014, 351–362)
 !  Input is temperature in deg C.
 
-   USE msingledouble
+   USE mocsy_singledouble
    IMPLICIT NONE
 
 !  Input & output variables:
@@ -439,7 +439,7 @@ FUNCTION scsf6(Tc)
 !  Compute Schmidt number of SF6 in seawater w/ formulation from Wanninkhof (Limnol. Oceanogr.: Methods 12, 2014, 351–362)
 !  Input is temperature in deg C.
 
-   USE msingledouble
+   USE mocsy_singledouble
    IMPLICIT NONE
 
 !  Input & output variables:
@@ -457,7 +457,7 @@ FUNCTION scco2(Tc)
 !  Compute Schmidt number of CO2 in seawater w/ formulation from Wanninkhof (Limnol. Oceanogr.: Methods 12, 2014, 351–362)
 !  Input is temperature in deg C.
 
-   USE msingledouble
+   USE mocsy_singledouble
    IMPLICIT NONE
 
 !  Input & output variables:
@@ -475,7 +475,7 @@ FUNCTION sco2(Tc)
 !  Compute Schmidt number of O2 in seawater w/ formulation from Wanninkhof (Limnol. Oceanogr.: Methods 12, 2014, 351–362)
 !  Input is temperature in deg C.
 
-   USE msingledouble
+   USE mocsy_singledouble
    IMPLICIT NONE
 
 !  Input & output variables:
@@ -492,7 +492,7 @@ SUBROUTINE x2pCO2atm(xCO2, temp, salt, Patm, N, pCO2atm)
   !    Purpose:
   !    Compute pCO2atm from arrays of xCO2, in situ T, S, & atm pressure
 
-  USE msingledouble
+  USE mocsy_singledouble
 
   IMPLICIT NONE
 
@@ -552,7 +552,7 @@ SUBROUTINE phizero(gasname, temp, salt, N, phi0)
   ! James Orr, LSCE/IPSL, CEA-CNRS-UVSQ, Université Paris Saclay, France
   ! 5 August 2016
   
-  USE msingledouble
+  USE mocsy_singledouble
   IMPLICIT NONE
 
   INTEGER, PARAMETER :: ngas = 5
@@ -651,7 +651,7 @@ SUBROUTINE kprime(gasname, temp, salt, N, kp)
   ! James Orr, LSCE/IPSL, CEA-CNRS-UVSQ, Université Paris Saclay, France
   ! 8 August 2016
   
-  USE msingledouble
+  USE mocsy_singledouble
   IMPLICIT NONE
 
   INTEGER, PARAMETER :: ngas = 3
@@ -740,7 +740,7 @@ SUBROUTINE kzero(gasname, temp, salt, N, k0)
   ! James Orr, LSCE/IPSL, CEA-CNRS-UVSQ, Université Paris Saclay, France
   ! 8 August 2016
   
-  USE msingledouble
+  USE mocsy_singledouble
   IMPLICIT NONE
 
   INTEGER, PARAMETER :: ngas = 2
@@ -817,7 +817,7 @@ SUBROUTINE vapress(temp, salt, N, vpsw)
   !    Purpose:
   !    Compute vapor pressure of seawater (atm) following preocedure from Weiss & Price (1980)
 
-  USE msingledouble
+  USE mocsy_singledouble
   IMPLICIT NONE
 
   !> number of records
@@ -872,7 +872,7 @@ SUBROUTINE o2sato(T, S, N, o2sat_molm3)
   !    o2sat_molm3 = 0.282015 mol/m^3
   !    ********************************************************************
 
-  USE msingledouble
+  USE mocsy_singledouble
   IMPLICIT NONE
 
   !> number of records
@@ -961,7 +961,7 @@ SUBROUTINE o2flux(T, S, kw660, ppo, o2, dz1, N, o2ex)
 #   define SGLE(x)    REAL(x)
 #endif
 
-  USE msingledouble
+  USE mocsy_singledouble
   IMPLICIT NONE
 
   !> number of records
@@ -1008,7 +1008,7 @@ SUBROUTINE o2flux(T, S, kw660, ppo, o2, dz1, N, o2ex)
   RETURN
 END SUBROUTINE o2flux
 
-END MODULE gasx
+END MODULE mocsy_gasx
 
 ! REFERENCES
 !
