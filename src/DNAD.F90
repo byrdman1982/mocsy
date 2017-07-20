@@ -13,8 +13,8 @@
 !* This is the procedure file: define the procedures (functions/subroutines) 
 !* needed for overloading intrinsic functions and operators. If a function 
 !* or operation is not defined (unlikely), you need to create a corresponding 
-!* interface in header file (DNADHeaders.f90) and a corresponding 
-!* function/subroutine in DNAD.f90.
+!* interface in header file (DNADHeaders.F90) and a corresponding 
+!* function/subroutine in DNAD.F90.
 !* If you are uncertain whether I did things in the correct way or not, you can 
 !* create a new module with the same definition of the type DUAL_NUM, but delete
 !* all the interfaces and procedures first. Then compile it with your analysis 
@@ -59,7 +59,7 @@
 !* can be automatically overloaded for vectors and matrices of the same shape
 !**********************************************************************************
 !* To AD a Fortran code use DNAD
-!* Step 0: compile DNAD.f90 to be DNAD.o
+!* Step 0: compile DNAD.F90 to be DNAD.o
 !* Step 1: Replace all the definitions of real numbers with dual numbers
 !*		For example
 !*  			replace REAL(8) :: x 	

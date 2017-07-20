@@ -1,4 +1,4 @@
-!> \file p80.f90
+!> \file p80.F90
 !! \BRIEF 
 !> Module with p80 function - compute pressure from depth
 MODULE mp80

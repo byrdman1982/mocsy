@@ -1,4 +1,4 @@
-!> \file phsolvers.f90
+!> \file phsolvers.F90
 !! \BRIEF 
 !> Module with routines needed to solve pH-total alkalinity equation (Munhoven, 2013, GMD)
 MODULE mphsolvers
@@ -10,7 +10,7 @@ MODULE mphsolvers
 ! Modifications J. C. Orr, LSCE/IPSL, CEA-CNRS-UVSQ, France, 11 Sep 2014:
 ! 1) kept only the 3 fastest solvers (atgen, atsec, atfast) and routines which they call
 ! 2) reduced vertical white space: deleted many blank lines & comment lines that served as divisions
-! 3) converted name from .F90 to .f90, deleting a few optional preprocesse if statements
+! 3) converted name from .F90 to .F90, deleting a few optional preprocesse if statements
 ! 4) read in mocsy computed equilibrium constants (as arguments) instead of USE MOD_CHEMCONST
 ! 5) converted routine names from upper case to lower case
 ! 6) commented out arguments and equations for NH4 and H2S acid systems

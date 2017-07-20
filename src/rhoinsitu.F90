@@ -1,4 +1,4 @@
-!> \file rhoinsitu.f90
+!> \file rhoinsitu.F90
 !! \BRIEF 
 !> Module with rhoinsitu subroutine - compute in situ density from S, Tis, P
 MODULE mrhoinsitu

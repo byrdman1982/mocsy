@@ -1,4 +1,4 @@
-!> \file buffesm2.f90
+!> \file buffesm2.F90
 !! \BRIEF 
 !> Module with buffesm subroutine - compute carbonate system vars from DIC,Alk,T,S,P,nuts
 MODULE mbuffesm
@@ -179,7 +179,7 @@ SUBROUTINE buffesm(gammaDIC, betaDIC, omegaDIC, gammaALK, betaALK, omegaALK, Rf,
 
 ! Local variables
 ! -----------------
-  ! 1) Output from constants.f90:
+  ! 1) Output from constants.F90:
   REAL(kind=r8), DIMENSION(N) :: K0
   REAL(kind=r8), DIMENSION(N) :: K1
   REAL(kind=r8), DIMENSION(N) :: K2
@@ -197,7 +197,7 @@ SUBROUTINE buffesm(gammaDIC, betaDIC, omegaDIC, gammaALK, betaALK, omegaALK, Rf,
   REAL(kind=r8), DIMENSION(N) :: Ft
   REAL(kind=r8), DIMENSION(N) :: Bt
 
-  ! 2) Output from vars.f90:
+  ! 2) Output from vars.F90:
   REAL(kind=rx), DIMENSION(N) :: ph
   REAL(kind=rx), DIMENSION(N) :: pco2
   REAL(kind=rx), DIMENSION(N) :: fco2

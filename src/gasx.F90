@@ -1,4 +1,4 @@
-!> \file gasx.f90
+!> \file mocsy_gasx.F90
 !! \BRIEF 
 !> Module with routines needed to compute gas exchange (flxco2, scco2, atmospheric xCO2 and pCO2)
 MODULE gasx
@@ -299,7 +299,7 @@ SUBROUTINE flxco2(co2flux, co2ex, dpco2,                                        
 
 !       "Atmospheric" [CO2*], air-sea CO2 flux, sfc DIC rate of change, & Delta pCO2
         co2starair = K0 * DBLE(fco2atm(i)) * 1.0e-6_r8 * DBLE(rhoSW(i)) !Equil. [CO2*] for atm CO2 at Patm & sfc-water T,S [mol/m3]
-        co2star = DBLE(co2(i))                                          !Oceanic [CO2*] in [mol/m3] from vars.f90
+        co2star = DBLE(co2(i))                                          !Oceanic [CO2*] in [mol/m3] from vars.F90
         co2flux(i) = SGLE(kwco2 * (co2starair - co2star))               !Air-sea CO2 flux [mol/(m2 * s)]
         co2ex(i) = co2flux(i) / dz1                                     !Change in sfc DIC due to gas exchange [mol/[m3 * s)]
         dpco2(i) = pco2(i) - pco2atm(i)                                 !Delta pCO2 (oceanic - atmospheric pCO2) [uatm]
@@ -615,7 +615,7 @@ SUBROUTINE phizero(gasname, temp, salt, N, phi0)
       CASE ('n2o')
           ig = 5
       CASE DEFAULT
-          PRINT *,"ERROR in 'phizero' routine in gasx.f90:"
+          PRINT *,"ERROR in 'phizero' routine in mocsy_gasx.F90:"
           PRINT *,"'gasname' input var must be one of the following: 'cfc11', 'cfc12', 'sf6', 'co2', or 'n2o'"
           STOP
   END SELECT
@@ -708,7 +708,7 @@ SUBROUTINE kprime(gasname, temp, salt, N, kp)
       CASE ('sf6')
           ig = 3
       CASE DEFAULT
-          PRINT *,"ERROR in 'kprime' routine in gasx.f90:"
+          PRINT *,"ERROR in 'kprime' routine in mocsy_gasx.F90:"
           PRINT *,"'gasname' input var must be one of the following: 'cfc11', 'cfc12', or 'sf6'"
           STOP
   END SELECT
@@ -793,7 +793,7 @@ SUBROUTINE kzero(gasname, temp, salt, N, k0)
       CASE ('n2o')
           ig = 2
       CASE DEFAULT
-          PRINT *,"ERROR in 'kzero' routine in gasx.f90:"
+          PRINT *,"ERROR in 'kzero' routine in mocsy_gasx.F90:"
           PRINT *,"'gasname' input var must be one of the following: 'co2' or 'n2o'"
           STOP
   END SELECT

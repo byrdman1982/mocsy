@@ -1,4 +1,4 @@
-!> \file sw_ptmp.f90
+!> \file sw_ptmp.F90
 !! \BRIEF 
 !> Module with sw_ptmp function - compute potential T from in-situ T
 MODULE msw_ptmp

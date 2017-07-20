@@ -1,4 +1,4 @@
-!> \file tis.f90
+!> \file tis.F90
 !! \BRIEF 
 !>    Module with tis subroutine - compute in situ T from S,T,P
 MODULE mtis

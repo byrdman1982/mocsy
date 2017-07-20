@@ -1,4 +1,4 @@
-!> \file constants.f90
+!> \file constants.F90
 !! \BRIEF 
 !> Module with contants subroutine - computes carbonate system constants
 !! from S,T,P 

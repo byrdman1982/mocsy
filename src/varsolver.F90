@@ -1,4 +1,4 @@
-!> \file varsolver.f90
+!> \file varsolver.F90
 !! \BRIEF 
 !> Module with varsolver subroutine - solve for pH and other carbonate system variables
 MODULE mvarsolver

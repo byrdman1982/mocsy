@@ -1,4 +1,4 @@
-!> \file derivauto.f90
+!> \file derivauto.F90
 !! \BRIEF 
 !> Module with derivauto subroutine - compute partial derivatives of carbonate system vars from DIC,Alk,T,S,P,nuts
 MODULE mderivauto

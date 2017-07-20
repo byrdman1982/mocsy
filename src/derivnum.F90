@@ -1,4 +1,4 @@
-!> \file derivnum.f90
+!> \file derivnum.F90
 !! \BRIEF 
 !> Module with derivnum subroutine - compute numerical derivatives of carbonate system vars 
 !> with respect to DIC, Alk, total phosphorus, total silicon, T, S

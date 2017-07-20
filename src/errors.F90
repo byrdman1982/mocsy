@@ -1,4 +1,4 @@
-!> \file errors.f90
+!> \file errors.F90
 !! \BRIEF 
 !> Module with errors subroutine - Propagate standard error (or uncertainty) in carbonate system vars 
 MODULE merrors

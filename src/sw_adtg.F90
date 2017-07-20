@@ -1,4 +1,4 @@
-!> \file sw_adtg.f90
+!> \file sw_adtg.F90
 !! \BRIEF 
 !> Module with sw_adtg function - compute adiabatic temp. gradient from S,T,P
 MODULE msw_adtg

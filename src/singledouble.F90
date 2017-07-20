@@ -1,4 +1,4 @@
-!> \file singledouble.f90
+!> \file singledouble.F90
 !! \BRIEF 
 !> Module that defines single and double precision - used by all other modules
 MODULE msingledouble

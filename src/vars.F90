@@ -1,4 +1,4 @@
-!> \file vars.f90
+!> \file vars.F90
 !! \BRIEF 
 !> Module with vars subroutine - compute carbonate system vars from DIC,Alk,T,S,P,nuts
 MODULE mvars
@@ -487,7 +487,7 @@ SUBROUTINE vars_pertK(ph, pco2, fco2, co2, hco3, co3, OmegaA, OmegaC,     &
   !     Same routine as vars() above except that it perturbs slightly one dissociation constant 
   !     before proceeding to computation of carbonate system variables (call to varsolver())
   !
-  !     This routine is intended only to be called internally by derivnum.f90
+  !     This routine is intended only to be called internally by derivnum.F90
   !     which computes numerical derivatives.
   
 

@@ -3,7 +3,7 @@
 #         make clean
 #         make 
 #  -------------------
-#  GNU_Makefile to COMPILE and LINK  test_mocsy.f90 and mocsy.f90
+#  GNU_Makefile to COMPILE and LINK  test_mocsy.F90 and mocsy.F90
 #  James Orr, LSCE/IPSL, CEA-CNRS-UVSQ, 91191 Gif-sur-Yvette, France
 #  15 January 2014
 
@@ -52,34 +52,34 @@ all: $(PROGRAMS)
 
 #---------------------------------------------------------------------------
 
-# Look for .f90 files first in the 'src' directory, then in the 'examples' directory
+# Look for .F90 files first in the 'src' directory, then in the 'examples' directory
 
-vpath %.f90 src
+vpath %.F90 src
 vpath %     examples
 
 #vpath %.h src
 
-SOURCES = singledouble.f90 \
-          sw_adtg.f90 \
-          sw_ptmp.f90 \
-          sw_temp.f90 \
-          tpot.f90 \
-          tis.f90 \
-          p80.f90 \
-          phsolvers.f90 \
-          rho.f90 \
-          rhoinsitu.f90 \
-          depth2press.f90 \
-          constants.f90 \
-          varsolver.f90 \
-          vars.f90 \
-          derivauto.f90 \
-          derivnum.f90 \
-          errors.f90 \
-          buffesm.f90 \
-          p2fCO2.f90 \
-          f2pCO2.f90 \
-          gasx.f90 
+SOURCES = singledouble.F90 \
+          sw_adtg.F90 \
+          sw_ptmp.F90 \
+          sw_temp.F90 \
+          tpot.F90 \
+          tis.F90 \
+          p80.F90 \
+          phsolvers.F90 \
+          rho.F90 \
+          rhoinsitu.F90 \
+          depth2press.F90 \
+          constants.F90 \
+          varsolver.F90 \
+          vars.F90 \
+          derivauto.F90 \
+          derivnum.F90 \
+          errors.F90 \
+          buffesm.F90 \
+          p2fCO2.F90 \
+          f2pCO2.F90 \
+          gasx.F90 
 
 OBJS =  singledouble.o \
         sw_adtg.o \
@@ -126,7 +126,7 @@ $(library): DNAD.o $(OBJS)
 #
 ## Build the shared object file for python
 #mocsy.so: $(OBJS)
-#	cp src/*.f90 .
+#	cp src/*.F90 .
 #	f2py -c $(SOURCES) -m mocsy --fcompiler=gnu95 --f90flags=-O3
 #	rm $(SOURCES)
 #=======
@@ -135,18 +135,18 @@ $(EXEC): $(EXEC).o DNAD.o $(OBJS) test_mocsy.o $(library)
 
 # Build the shared object file for python
 mocsy.so: DNAD.o $(SOURCES)
-	cp src/*.f90 .
+	cp src/*.F90 .
 	# Select the kind map
-	cp -f -s src/$(KIND_MAP) .f2py_f2cmap
+	cp -f src/$(KIND_MAP) .f2py_f2cmap
 	f2py -c $(SOURCES) skip: varsolver_dnad : skip: constants_dnad :        \
 	skip: sw_ptmp_dnad : skip: sw_temp_dnad : skip: sw_adtg_dnad :          \
 	skip: rho_dnad : skip: equation_at_dnad : skip: solve_at_general_dnad : \
 	DNAD.o -m mocsy --fcompiler=gnu95 --f90flags="$(FCFLAGS)"
-	rm $(SOURCES) DNAD.f90
+	rm $(SOURCES) DNAD.F90
 #---------------------------------------------------------------------------
 # Other test programs
 #test_errors:  $(LIBSRC_OBJECTS) test_errors.o $(library) 
-#	${FC} ${FCFLAGS} -o $@ $@.f90 $(LDFLAGS)
+#	${FC} ${FCFLAGS} -o $@ $@.F90 $(LDFLAGS)
 
 test_errors: test_errors.o $(OBJS) $(library) 
 	${FC} ${FCFLAGS} -o $@ $@.o $(LDFLAGS)
@@ -178,7 +178,7 @@ test_kzero: test_kzero.o $(OBJS) $(library)
 # General rules for building prog.o from prog.f90 or prog.F90; $< is
 # used in order to list only the first prerequisite (the source file)
 # and not the additional prerequisites such as module or include files
-%.o: %.f90
+%.o: %.F90
 	$(FC) $(FCFLAGS) $(INCLUDEFLAGS) -c $<
 
 %.o: %.F90
