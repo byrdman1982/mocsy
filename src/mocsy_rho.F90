@@ -2,6 +2,14 @@
 !! \BRIEF 
 !> Module with rho function - computes in situ density from S, T, P
 MODULE mocsy_rho
+
+USE mocsy_singledouble, only : r8, rx, wp
+USE Dual_Num_Auto_Diff
+
+IMPLICIT NONE ; PRIVATE
+
+PUBLIC rho, rho_DNAD 
+
 CONTAINS
 !> Function to compute in situ density from salinity (psu), in situ temperature (C), & pressure (bar)
 FUNCTION rho(salt, temp, pbar)
@@ -13,9 +21,6 @@ FUNCTION rho(salt, temp, pbar)
 #else
 #   define SGLE(x)    REAL(x)
 #endif
-
-  USE mocsy_singledouble
-  IMPLICIT NONE
 
   !> salinity [psu]
   REAL(kind=rx) :: salt
@@ -102,10 +107,6 @@ FUNCTION rho_DNAD(salt, temp, pbar)
   ! It is similar to subroutine 'rho' above except that it computes
   ! partial derivatives of in situ density
   ! with respect to salinity and temperature.
-
-  USE mocsy_singledouble
-  USE Dual_Num_Auto_Diff
-  IMPLICIT NONE
 
   !> salinity [psu]
   TYPE (DUAL_NUM) :: salt

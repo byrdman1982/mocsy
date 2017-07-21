@@ -2,6 +2,13 @@
 !! \BRIEF 
 !> Module with p80 function - compute pressure from depth
 MODULE mocsy_p80
+
+USE mocsy_singledouble, only : rx, r8, wp
+
+IMPLICIT NONE ; PRIVATE
+
+PUBLIC p80
+
 CONTAINS
 !>     Function to compute pressure from depth using Saunder's (1981) formula with eos80.
 FUNCTION p80(dpth,xlat)
@@ -20,8 +27,6 @@ FUNCTION p80(dpth,xlat)
   !     Modified (slight format changes + added ref. details):
   !     J. Orr, 16 April 2009
 
-  USE mocsy_singledouble
-  IMPLICIT NONE
 
 ! Input variables:
   !> depth [m]

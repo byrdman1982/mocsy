@@ -2,6 +2,17 @@
 !! \BRIEF 
 !> Module with routines needed to compute gas exchange (flxco2, scco2, atmospheric xCO2 and pCO2)
 MODULE mocsy_gasx
+
+USE mocsy_singledouble, only : rx, r8, wp
+USE mocsy_vars, only : vars
+USE mocsy_p2fCO2, only : p2fCO2
+
+IMPLICIT NONE ; PRIVATE
+
+PUBLIC flxco2, pCO2atm2xCO2, pistonvel, x2pCO2atm, phizero, kprime
+PUBLIC kzero, vapress, o2sato, o2flux
+PUBLIC sccfc11, sccfc12, scsf6, scco2, sco2
+
 CONTAINS
 !>    Computes air-sea CO2 flux & surface-ocean carbonate system vars (pH, CO2*, HCO3- and CO32-, OmegaA, OmegaC, R)
 !!    from T, S, P, ALK, DIC, total inorganic silicon, total inorganic phosphorus, all as 1-D arrays
@@ -105,12 +116,6 @@ SUBROUTINE flxco2(co2flux, co2ex, dpco2,                                        
 #else
 #   define SGLE(x)    REAL(x)
 #endif
-
-  USE mocsy_singledouble
-  USE mocsy_vars
-  USE mocsy_p2fCO2
-
-  IMPLICIT NONE
 
 ! Input variables
   !>     number of records
@@ -315,10 +320,6 @@ SUBROUTINE pCO2atm2xCO2(pCO2atm, temp, salt, Patm, N, xCO2)
   !    Purpose:
   !    Compute xCO2 from arrays of pCO2atm, in situ T, S, & atm pressure
 
-  USE mocsy_singledouble
-
-  IMPLICIT NONE
-
   !> number of records
   INTEGER, intent(in) :: N
 
@@ -361,10 +362,6 @@ SUBROUTINE pistonvel(windspeed, Fice, N, kw660)
   !    Purpose:
   !    Compute piston velocity from wind speed, BUT without Schmidt number temperature correction (Sc differs each gas)
 
-  USE mocsy_singledouble
-
-  IMPLICIT NONE
-
   !> number of records
   INTEGER, intent(in) :: N
 
@@ -403,9 +400,6 @@ FUNCTION sccfc11(temp)
 !  Compute Schmidt number of CFC11 in seawater w/ formulation from Wanninkhof (Limnol. Oceanogr.: Methods 12, 2014, 351–362)
 !  Input is temperature in deg C.
 
-   USE mocsy_singledouble
-   IMPLICIT NONE
-
 !  Input & output variables:
    REAL(kind=r8), INTENT(in) :: temp
    REAL(kind=r8) :: sccfc11
@@ -420,9 +414,6 @@ FUNCTION sccfc12(Tc)
 
 !  Compute Schmidt number of CFC12 in seawater w/ formulation from Wanninkhof (Limnol. Oceanogr.: Methods 12, 2014, 351–362)
 !  Input is temperature in deg C.
-
-   USE mocsy_singledouble
-   IMPLICIT NONE
 
 !  Input & output variables:
    REAL(kind=r8), INTENT(in) :: Tc
@@ -439,9 +430,6 @@ FUNCTION scsf6(Tc)
 !  Compute Schmidt number of SF6 in seawater w/ formulation from Wanninkhof (Limnol. Oceanogr.: Methods 12, 2014, 351–362)
 !  Input is temperature in deg C.
 
-   USE mocsy_singledouble
-   IMPLICIT NONE
-
 !  Input & output variables:
    REAL(kind=r8), INTENT(in) :: Tc
    REAL(kind=r8) :: scsf6
@@ -456,9 +444,6 @@ FUNCTION scco2(Tc)
 
 !  Compute Schmidt number of CO2 in seawater w/ formulation from Wanninkhof (Limnol. Oceanogr.: Methods 12, 2014, 351–362)
 !  Input is temperature in deg C.
-
-   USE mocsy_singledouble
-   IMPLICIT NONE
 
 !  Input & output variables:
    REAL(kind=r8), INTENT(in) :: Tc
@@ -475,9 +460,6 @@ FUNCTION sco2(Tc)
 !  Compute Schmidt number of O2 in seawater w/ formulation from Wanninkhof (Limnol. Oceanogr.: Methods 12, 2014, 351–362)
 !  Input is temperature in deg C.
 
-   USE mocsy_singledouble
-   IMPLICIT NONE
-
 !  Input & output variables:
    REAL(kind=r8), INTENT(in) :: Tc
    REAL(kind=r8) :: sco2
@@ -491,10 +473,6 @@ END FUNCTION sco2
 SUBROUTINE x2pCO2atm(xCO2, temp, salt, Patm, N, pCO2atm)
   !    Purpose:
   !    Compute pCO2atm from arrays of xCO2, in situ T, S, & atm pressure
-
-  USE mocsy_singledouble
-
-  IMPLICIT NONE
 
   !> number of records
   INTEGER, intent(in) :: N
@@ -552,9 +530,6 @@ SUBROUTINE phizero(gasname, temp, salt, N, phi0)
   ! James Orr, LSCE/IPSL, CEA-CNRS-UVSQ, Université Paris Saclay, France
   ! 5 August 2016
   
-  USE mocsy_singledouble
-  IMPLICIT NONE
-
   INTEGER, PARAMETER :: ngas = 5
   
   !> number of records
@@ -651,9 +626,6 @@ SUBROUTINE kprime(gasname, temp, salt, N, kp)
   ! James Orr, LSCE/IPSL, CEA-CNRS-UVSQ, Université Paris Saclay, France
   ! 8 August 2016
   
-  USE mocsy_singledouble
-  IMPLICIT NONE
-
   INTEGER, PARAMETER :: ngas = 3
   
   !> number of records
@@ -740,9 +712,6 @@ SUBROUTINE kzero(gasname, temp, salt, N, k0)
   ! James Orr, LSCE/IPSL, CEA-CNRS-UVSQ, Université Paris Saclay, France
   ! 8 August 2016
   
-  USE mocsy_singledouble
-  IMPLICIT NONE
-
   INTEGER, PARAMETER :: ngas = 2
   
   !> number of records
@@ -817,9 +786,6 @@ SUBROUTINE vapress(temp, salt, N, vpsw)
   !    Purpose:
   !    Compute vapor pressure of seawater (atm) following preocedure from Weiss & Price (1980)
 
-  USE mocsy_singledouble
-  IMPLICIT NONE
-
   !> number of records
   INTEGER, intent(in) :: N
 
@@ -871,9 +837,6 @@ SUBROUTINE o2sato(T, S, N, o2sat_molm3)
   !    CHECK VALUE:  T = 10.0 deg C, S = 35.0 permil, 
   !    o2sat_molm3 = 0.282015 mol/m^3
   !    ********************************************************************
-
-  USE mocsy_singledouble
-  IMPLICIT NONE
 
   !> number of records
   INTEGER, intent(in) :: N
@@ -960,9 +923,6 @@ SUBROUTINE o2flux(T, S, kw660, ppo, o2, dz1, N, o2ex)
 #else
 #   define SGLE(x)    REAL(x)
 #endif
-
-  USE mocsy_singledouble
-  IMPLICIT NONE
 
   !> number of records
   INTEGER, intent(in) :: N

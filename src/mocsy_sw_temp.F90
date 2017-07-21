@@ -2,6 +2,15 @@
 !! \BRIEF 
 !> Module with sw_temp function - compute in-situ T from potential T
 MODULE mocsy_sw_temp
+
+USE mocsy_singledouble, only : rx, r8, wp
+USE mocsy_sw_ptmp, only : sw_ptmp, sw_ptmp_DNAD
+USE Dual_Num_Auto_Diff
+
+IMPLICIT NONE ; PRIVATE
+
+PUBLIC sw_temp, sw_temp_DNAD
+
 CONTAINS
 !> Function to compute in-situ temperature [C] from potential temperature [C]
 FUNCTION sw_temp( s, t, p, pr )
@@ -34,10 +43,6 @@ FUNCTION sw_temp( s, t, p, pr )
 #else
 #   define SGLE(x)    REAL(x)
 #endif
-
-  USE mocsy_singledouble
-  USE mocsy_sw_ptmp
-  IMPLICIT NONE
 
   !     Input arguments:
   !     -----------------------------------------------
@@ -110,11 +115,6 @@ FUNCTION sw_temp_DNAD( s, t, p, pr )
   !     Simple modifications: J. C. Orr, 16 April 2009
   !     - combined fortran code from MITgcm site & simplification in
   !       CSIRO code (matlab equivalent) from Phil Morgan
-
-  USE mocsy_singledouble
-  USE mocsy_sw_ptmp
-  USE Dual_Num_Auto_Diff
-  IMPLICIT NONE
 
   !     Input arguments:
   !     -----------------------------------------------

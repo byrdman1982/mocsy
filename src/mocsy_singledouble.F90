@@ -2,6 +2,11 @@
 !! \BRIEF 
 !> Module that defines single and double precision - used by all other modules
 MODULE mocsy_singledouble
+
+IMPLICIT NONE ; PRIVATE
+
+PUBLIC rx, r8, wp
+
 ! INTEGER, PARAMETER :: r4 = SELECTED_REAL_KIND(6)
 ! INTEGER, PARAMETER :: r8 = SELECTED_REAL_KIND(12)
 

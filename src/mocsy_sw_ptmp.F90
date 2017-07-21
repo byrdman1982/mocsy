@@ -2,6 +2,15 @@
 !! \BRIEF 
 !> Module with sw_ptmp function - compute potential T from in-situ T
 MODULE mocsy_sw_ptmp
+
+USE mocsy_singledouble, only : rx, r8, wp
+USE mocsy_sw_adtg, only : sw_adtg, sw_adtg_DNAD
+USE Dual_Num_Auto_Diff
+
+IMPLICIT NONE ; PRIVATE
+
+PUBLIC sw_ptmp, sw_ptmp_DNAD
+
 CONTAINS
 !> Function to calculate potential temperature [C] from in-situ temperature
 FUNCTION sw_ptmp  (s,t,p,pr)
@@ -18,10 +27,6 @@ FUNCTION sw_ptmp  (s,t,p,pr)
   !     t  = temperature         [degree C (IPTS-68)]
   !     p  = pressure            [db]
   !     pr = reference pressure  [db]
-
-  USE mocsy_singledouble
-  USE mocsy_sw_adtg
-  IMPLICIT NONE
 
 ! Input arguments
   !> salinity [psu (PSS-78)]
@@ -87,11 +92,6 @@ FUNCTION sw_ptmp_DNAD  (s,t,p,pr)
   !     t  = temperature         [degree C (IPTS-68)]
   !     p  = pressure            [db]
   !     pr = reference pressure  [db]
-
-  USE mocsy_singledouble
-  USE mocsy_sw_adtg
-  USE Dual_Num_Auto_Diff
-  IMPLICIT NONE
 
 ! Input arguments
   !> salinity [psu (PSS-78)]

@@ -15,9 +15,14 @@ MODULE mocsy_phsolvers
 ! 5) converted routine names from upper case to lower case
 ! 6) commented out arguments and equations for NH4 and H2S acid systems
 
-USE mocsy_singledouble
+USE mocsy_singledouble, only : rx, r8, wp
 USE Dual_Num_Auto_Diff
-IMPLICIT NONE
+
+IMPLICIT NONE ; PRIVATE
+
+PUBLIC anw_infsup, ahini_for_at
+PUBLIC equation_at, equation_at_DNAD
+PUBLIC solve_at_general, solve_at_general_DNAD, solve_at_general_sec, SOLVE_AT_FAST
 
 ! General parameters
 REAL(KIND=wp), PARAMETER :: pp_rdel_ah_target = 1.E-8_wp
@@ -53,9 +58,6 @@ SUBROUTINE anw_infsup(p_dictot, p_bortot,                                     &
 ! contributions to total alkalinity (the infimum and the supremum), i.e
 ! inf(TA - [OH-] + [H+]) and sup(TA - [OH-] + [H+])
 
-USE mocsy_singledouble
-IMPLICIT NONE
-
 ! Argument variables
 REAL(KIND=wp), INTENT(IN)  :: p_dictot
 REAL(KIND=wp), INTENT(IN)  :: p_bortot
@@ -86,8 +88,6 @@ FUNCTION equation_at(p_alktot, p_h,       p_dictot, p_bortot,                 &
 
   ! Purpose: Compute total alkalinity from ion concentrations and equilibrium constants
 
-USE mocsy_singledouble
-IMPLICIT NONE
 REAL(KIND=wp) :: equation_at
 
 ! Argument variables
@@ -231,8 +231,6 @@ FUNCTION equation_at_DNAD(p_alktot, p_h,       p_dictot, p_bortot,              
   ! partial derivatives of total alkalinity
   ! with respect to four input variables : ta, tc pt and sit
 
-USE mocsy_singledouble
-IMPLICIT NONE
 TYPE(DUAL_NUM) ::equation_at_DNAD
 
 ! Argument variables
@@ -377,9 +375,6 @@ SUBROUTINE ahini_for_at(p_alkcb, p_dictot, p_bortot, K1, K2, Kb, p_hini)
 
 !USE MOD_CHEMCONST, ONLY : api1_dic, api2_dic, api1_bor
 
-USE mocsy_singledouble
-IMPLICIT NONE
-
 ! Argument variables 
 !--------------------
 REAL(KIND=wp), INTENT(IN)   ::  p_alkcb, p_dictot, p_bortot
@@ -437,8 +432,6 @@ FUNCTION solve_at_general(p_alktot, p_dictot, p_bortot,                       &
 ! Universal pH solver that converges from any given initial value,
 ! determines upper an lower bounds for the solution if required
 
-USE mocsy_singledouble
-IMPLICIT NONE
 REAL(KIND=wp) :: SOLVE_AT_GENERAL
 
 ! Argument variables 
@@ -653,8 +646,6 @@ FUNCTION solve_at_general_DNAD (p_alktot, p_dictot, p_bortot,                 &
 !        But only four input parameters are required to be passed as such :
 !         p_alktot, p_dictot, p_po4tot and p_siltot
 
-USE mocsy_singledouble
-IMPLICIT NONE
 ! value and partial derivatives of [H+] are returned in one objet of type DUAL_NUM
 TYPE(DUAL_NUM) ::SOLVE_AT_GENERAL_DNAD
 
@@ -859,8 +850,6 @@ FUNCTION solve_at_general_sec(p_alktot, p_dictot, p_bortot,                   &
 ! determines upper an lower bounds for the solution if required
 
 !USE MOD_CHEMCONST, ONLY: api1_wat, aphscale
-USE mocsy_singledouble
-IMPLICIT NONE
 REAL(KIND=wp) :: SOLVE_AT_GENERAL_SEC
 
 ! Argument variables 
@@ -1127,8 +1116,6 @@ FUNCTION SOLVE_AT_FAST(p_alktot, p_dictot, p_bortot,                          &
 
 ! Fast version of SOLVE_AT_GENERAL, without any bounds checking.
 
-USE mocsy_singledouble
-IMPLICIT NONE
 REAL(KIND=wp) :: SOLVE_AT_FAST
 
 ! Argument variables 

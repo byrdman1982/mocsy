@@ -2,6 +2,16 @@
 !! \BRIEF 
 !> Module with varsolver subroutine - solve for pH and other carbonate system variables
 MODULE mocsy_varsolver
+
+USE mocsy_singledouble, only : rx, r8, wp
+USE mocsy_phsolvers, only : solve_at_general, solve_at_general_DNAD
+USE mocsy_sw_ptmp, only : sw_ptmp
+USE Dual_Num_Auto_Diff
+
+IMPLICIT NONE ; PRIVATE
+
+PUBLIC varsolver, varsolver_DNAD 
+
 CONTAINS
 !>    Solve for pH and other carbonate system variables (with input from vars routine)
 SUBROUTINE varsolver(ph, pco2, fco2, co2, hco3, co3, OmegaA, OmegaC,             &
@@ -48,12 +58,6 @@ SUBROUTINE varsolver(ph, pco2, fco2, co2, hco3, co3, OmegaA, OmegaC,            
   !     co3  = carbonate (CO3--) concentration in [mol/kg] or [mol/m^3] determined by rhodum
   !     OmegaA = Omega for aragonite, i.e., the aragonite saturation state
   !     OmegaC = Omega for calcite, i.e., the   calcite saturation state
-
-  USE mocsy_singledouble
-  USE mocsy_phsolvers
-  USE mocsy_sw_ptmp
-
-  IMPLICIT NONE
 
 ! Input variables
   !> <b>in situ temperature</b> [degrees C]
@@ -298,13 +302,6 @@ SUBROUTINE varsolver_DNAD (ph, pco2, fco2, co2, hco3, co3, OmegaA, OmegaC,      
   !     co3  = carbonate (CO3--) concentration in [mol/kg] or [mol/m^3] determined by rhodum
   !     OmegaA = Omega for aragonite, i.e., the aragonite saturation state
   !     OmegaC = Omega for calcite, i.e., the   calcite saturation state
-
-  USE mocsy_singledouble
-  USE mocsy_phsolvers
-  USE mocsy_sw_ptmp
-  USE Dual_Num_Auto_Diff
-
-  IMPLICIT NONE
 
 ! Input variables
   !> <b>in situ temperature</b> [degrees C]

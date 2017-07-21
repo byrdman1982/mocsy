@@ -3,6 +3,14 @@
 !> Module with depth2press subroutine - converts depth to pressure
 !! with Saunders (1981) formula
 MODULE mocsy_depth2press
+
+USE mocsy_singledouble, only : rx, r8, wp
+USE mocsy_p80, only : p80
+
+IMPLICIT NONE ; PRIVATE
+
+PUBLIC depth2press
+
 CONTAINS
 !>     Compute pressure [db] from depth [m] & latitude [degrees north].
 !!     This subroutine is needed because p80 is a function (using scalars not arrays)
@@ -12,9 +20,6 @@ SUBROUTINE depth2press(depth, lat, pdbar, N)
   !     Compute pressure [db] from depth [m] & latitude [degrees north].
   !     Needed because p80 is a function 
 
-  USE mocsy_singledouble
-  USE mocsy_p80
-  IMPLICIT NONE
 
   !> number of records
 !f2py intent(hide) n

@@ -3,6 +3,17 @@
 !> Module with contants subroutine - computes carbonate system constants
 !! from S,T,P 
 MODULE mocsy_constants
+
+USE mocsy_singledouble, only : rx, r8, wp
+USE mocsy_p80, only : p80
+USE mocsy_sw_temp, only : sw_temp, sw_temp_DNAD
+USE mocsy_sw_ptmp, only : sw_ptmp, sw_ptmp_DNAD
+USE Dual_Num_Auto_Diff
+
+IMPLICIT NONE ; PRIVATE
+
+PUBLIC constants, constants_DNAD
+
 CONTAINS
 !> Compute thermodynamic constants
 !! FROM temperature, salinity, and pressure (1D arrays)
@@ -80,12 +91,6 @@ SUBROUTINE constants(K0, K1, K2, Kb, Kw, Ks, Kf, Kspc, Kspa,  &
 #else
 #   define SGLE(x)    REAL(x)
 #endif
-
-  USE mocsy_singledouble
-  USE mocsy_p80
-  USE mocsy_sw_temp
-  USE mocsy_sw_ptmp
-  IMPLICIT NONE
 
 ! Input variables
   !>     number of records
@@ -706,13 +711,6 @@ SUBROUTINE constants_DNAD(K0, K1, K2, Kb, Kw, Ks, Kf, Kspc, Kspa,  &
   !     =================
   !     K0, K1, K2, Kb, Kw, Ks, Kf, Kspc, Kspa, K1p, K2p, K3p, Ksi
   !     St, Ft, Bt
-
-  USE mocsy_singledouble
-  USE mocsy_p80
-  USE mocsy_sw_temp
-  USE mocsy_sw_ptmp
-  USE Dual_Num_Auto_Diff
-  IMPLICIT NONE
 
 ! Input variables
   !>     number of records

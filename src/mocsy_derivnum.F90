@@ -3,6 +3,14 @@
 !> Module with derivnum subroutine - compute numerical derivatives of carbonate system vars 
 !> with respect to DIC, Alk, total phosphorus, total silicon, T, S
 MODULE mocsy_derivnum
+
+USE mocsy_singledouble, only : rx, r8, wp
+USE mocsy_vars, only : vars, vars_pertK
+  
+IMPLICIT NONE ; PRIVATE
+
+PUBLIC derivnum
+
 CONTAINS
 
 
@@ -107,11 +115,6 @@ SUBROUTINE derivnum (dh_dx, dpco2_dx, dfco2_dx, dco2_dx, dhco3_dx,              
   !     dOmegaA_dx = derivative of Omega for aragonite, i.e., the aragonite saturation state
   !     dOmegaC_dx = derivative of Omega for calcite, i.e., the   calcite saturation state
 
-
-  USE mocsy_singledouble
-  USE mocsy_vars
-  
-  IMPLICIT NONE
 
 ! Input variables
   !>     number of records

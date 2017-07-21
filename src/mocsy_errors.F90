@@ -2,6 +2,15 @@
 !! \BRIEF 
 !> Module with errors subroutine - Propagate standard error (or uncertainty) in carbonate system vars 
 MODULE mocsy_errors
+
+USE mocsy_singledouble, only : rx, r8, wp
+USE mocsy_constants, only : constants, constants_DNAD
+USE mocsy_derivnum, only : derivnum
+
+IMPLICIT NONE ; PRIVATE
+
+PUBLIC errors
+
 CONTAINS
 
 
@@ -70,12 +79,6 @@ SUBROUTINE errors  (eH, epCO2, efCO2, eCO2, eHCO3, eCO3, eOmegaA, eOmegaC,   &
 #   define SGLE(x)    REAL(x)
 #endif
 
-  USE mocsy_singledouble
-  USE mocsy_constants
-  USE mocsy_derivnum
-
-  IMPLICIT NONE
-  
 ! Input variables
   !>     number of records
 !f2py intent(hide) n

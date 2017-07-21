@@ -2,6 +2,19 @@
 !! \BRIEF 
 !> Module with derivauto subroutine - compute partial derivatives of carbonate system vars from DIC,Alk,T,S,P,nuts
 MODULE mocsy_derivauto
+
+USE mocsy_singledouble, only : rx, r8, wp
+USE mocsy_constants, only : constants, constants_DNAD
+USE mocsy_p80, only : p80
+USE mocsy_rho, only : rho, rho_DNAD
+USE mocsy_sw_temp, only : sw_temp, sw_temp_DNAD
+USE mocsy_varsolver, only : varsolver, varsolver_DNAD
+USE Dual_Num_Auto_Diff
+
+IMPLICIT NONE ; PRIVATE
+
+PUBLIC derivauto
+
 CONTAINS
 !>    Computes partial derivatives of standard carbonate system variables (pH, CO2*, HCO3- and CO32-, OmegaA, OmegaC, R)
 !!    as 1D arrays FROM
@@ -110,16 +123,6 @@ SUBROUTINE derivauto(ph_deriv, pco2_deriv, fco2_deriv, co2_deriv, hco3_deriv, co
 #else
 #   define SGLE(x)    REAL(x)
 #endif
-
-  USE mocsy_singledouble
-  USE mocsy_constants
-  USE mocsy_p80
-  USE mocsy_rho
-  USE mocsy_sw_temp
-  USE mocsy_varsolver
-  USE Dual_Num_Auto_Diff
-  
-  IMPLICIT NONE
 
 ! Input variables
   !>     number of records
